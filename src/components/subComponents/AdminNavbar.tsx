@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import farmerIcons from '../../assets/farmer_icons.png'
 import milkCow from '../../assets/milk_cow.jpg'
 import production from '../../assets/production.jpg'
+import { FarmersArray } from "../../types/WorkerType";
 
-const AdminNavbar = () => {
+type Props = {
+    farmers: FarmersArray;
+    setFarmers: React.Dispatch<React.SetStateAction<FarmersArray>>;
+};
+
+const AdminNavbar:React.FC<Props> = ({ farmers, setFarmers }) => {
     const [activeTab, setActiveTab] = useState(1);
 
     const handleTabClick = (tabNumber: number) => {
@@ -23,7 +29,7 @@ const AdminNavbar = () => {
                     <div className="user-card-info">
                         <h1>Farmer Payment</h1>
                         <div className="detail">
-                            <h3><span className='dot red'></span><b>Paid:</b> 30 Famers</h3>
+                            <h3><span className='dot red'></span><b>Paid: </b>{farmers.length} Farmers</h3>
                             <h3><span className='dot green'></span><b>Unpaid:</b> 30 Famers</h3>
                             <h3><span className='dot yellow'></span><b>Padding:</b> 30 Famers</h3>
                         </div>

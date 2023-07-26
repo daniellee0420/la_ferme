@@ -1,57 +1,78 @@
 import React, { useState } from 'react';
-import { salaryPayments } from '../utils/database';
+import { FarmersArray } from "../types/WorkerType";
+import { useNavigate } from "react-router-dom";
 
-const NewPayment = () => {
-  const [workerName, setWorkerName] = useState('');
-  const [salaryAmount, setSalaryAmount] = useState('');
-  const [paymentTime, setPaymentTime] = useState('');
+type Props = {
+  farmers: FarmersArray;
+  setFarmers: React.Dispatch<React.SetStateAction<FarmersArray>>;
+};
+
+const NewPayment: React.FC<Props> = ({ farmers, setFarmers }) => {
+  const navigate = useNavigate();
+  
+  const [id, setId] = useState(farmers.length + 1)
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [salary, setSalary] = useState('');
   const [workerType, setWorkerType] = useState<'casual' | 'monthly'>('casual');
   const [balanceTime, setBalanceTime] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const id = salaryPayments.length + 1;
-    salaryPayments.push({
+  const handleFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const salaryNumber = Number(salary);
+
+    const newFarmer = {
       id,
-      workerName,
-      salaryAmount: Number(salaryAmount),
-      paymentTime,
+      name,
+      surname,
+      salary: salaryNumber,
+      timeRecorded: new Date().toISOString(), 
       workerType,
-      balanceTime: workerType === 'monthly' ? balanceTime : undefined,
-    });
-    // Clear form fields after submission
-    setWorkerName('');
-    setSalaryAmount('');
-    setPaymentTime('');
-    setBalanceTime('');
-  };
+      balanceTime: balanceTime || null,
+    };
+
+    setFarmers((prev) => [...prev, newFarmer])
+    console.log(farmers);
+    
+    setId(farmers.length + 1);
+    // setName('');
+    // setSurname('');
+    // setSalary('');
+    // setBalanceTime('');
+    // alert("Form submited")
+    // navigate("/SalaryPaymentList");
+  }
 
   return (
     <div className='data'>
       <div className="form-content">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <div className="names">
             <div>
               <label>Name: </label><br />
-              <input type="text" placeholder="Work's Name" onChange={(e) => setWorkerName(e.target.value)} />
+              <input value={name} type="text" required placeholder="Work's Name" onChange={(e) => setName(e.target.value)} />
             </div>
             <div>
               <label>Surname: </label><br />
-              <input type="text" placeholder="Work's Surname" onChange={(e) => setWorkerName(e.target.value)} />
+              <input value={surname} type="text" required placeholder="Work's Surname" onChange={(e) => setSurname(e.target.value)} />
             </div>
           </div>
 
           <div className="amount">
             <div className="amountIpt">
               <label>The amount: </label><br />
-              <input type="number" min="100" className="amountIpt" placeholder='Minimum 100$' onChange={(e) => setWorkerName(e.target.value)} />
+              <input type="number" min="100" className="amountIpt" required placeholder='Minimum 100$' onChange={(e) => setSalary(e.target.value)} />
             </div>
             <div className="casual">
               <fieldset className="checkbox-group">
                 <legend className="checkbox-group-legend">Type of worker: </legend>
                 <div className="checkbox">
                   <label className="checkbox-wrapper">
-                    <input type="radio" value="value1" checked name="question1" className="checkbox-input" />
+                    <input type="radio" required
+                      value="monthly"
+                      checked={workerType === 'monthly'}
+                      onChange={() => setWorkerType('monthly')}
+                      name="question1" className="checkbox-input" />
                     <span className="checkbox-tile">
                       <span className="checkbox-label">Monthly Paid</span>
                     </span>
@@ -59,7 +80,11 @@ const NewPayment = () => {
                 </div>
                 <div className="checkbox">
                   <label className="checkbox-wrapper">
-                    <input type="radio" value="value1" name="question1" className="checkbox-input" />
+                    <input type="radio" required
+                      value="casual"
+                      checked={workerType === 'casual'}
+                      onChange={() => setWorkerType('casual')}
+                      name="question1" className="checkbox-input" />
                     <span className="checkbox-tile">
                       <span className="checkbox-label">Cosual Paid</span>
                     </span>
@@ -69,7 +94,7 @@ const NewPayment = () => {
             </div>
             <div className="payTime">
               <label>Time of balance to be paid: </label><br />
-              <input type="date" placeholder='Payment time' onChange={(e) => setWorkerName(e.target.value)} />
+              <input type="date" value={balanceTime} onChange={(e) => setBalanceTime(e.target.value)} placeholder='Payment time' />
             </div>
           </div>
           <div className='submit'>

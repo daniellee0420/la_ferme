@@ -52,9 +52,12 @@ a {
 }
 
 .nav_items a {
-	display: block;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
 	padding: 20px 30px;
-	font-size: 18px;
+	font-size: 14px;
 	font-weight: 400;
 	text-align: left;
 	transition: all .4s ease;
@@ -225,12 +228,22 @@ table {
 	box-shadow: rgba(185, 188, 191, 0.2) 0px 0px 24px 5px;
 	border-radius: 10px;
 	border-radius: 5px;
-	font-family: arial;
 	overflow: auto;
+	color: rgb(90, 90, 90);;
 }
 table thead th {
 	padding: 10px 10px;
 	text-align: left;
+}
+
+table .noData{
+	position: absolute;
+	left: 45%;
+	padding: 20px 0;
+	
+}
+table .noData small{ 
+	text-align: center;
 }
 
 table tbody tr td {
@@ -245,12 +258,11 @@ table tbody tr .action {
 	display: flex;
 }
 table tbody tr .action button {
-	margin-right: 10px;
-	cursor: pointer;
-	background-color: #f3f3f5;
-	border: none;
 	padding: 5px 10px;
-	border-radius: 2px;
+}
+table tbody tr .action button:focus{
+	outline: none;
+	border: none;
 }
 table tbody tr .action button:last-child {
 	margin-right: 0;
@@ -516,6 +528,43 @@ table .res-head {
 	transition: 0.375s ease;
 	text-align: center;
 }
+
+/* Milk Production  */
+.data .form-content form .milkForm{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	/* justify-content: space-between; */
+	gap: 20px;
+	margin-bottom: 20px;
+}
+.data .form-content form .milkForm .exDate, .quantity{
+	width: 25%;
+}
+.data .form-content form .milkForm .descrpt{
+	width: 75%;
+}
+.data .form-content form .milkForm .descrpt .textarea{
+	width: 100%;
+	max-width:300px;
+}
+.data .form-content form .milkForm div label{
+	font-weight: 700;
+	color: #9c9c9c;
+}
+.data .form-content form .milkForm input, textarea{
+	border: 3px solid rgb(83, 83, 86);
+	width: 100%;
+	padding: 8px 10px;
+	border-radius: 2px;
+}
+.data .form-content form .milkForm input:focus{
+	border: 3px solid #08762e;
+	outline: none;
+}
+
+
+
 
 /* border: 3px solid #08762e;
 	color: #08762e; */
