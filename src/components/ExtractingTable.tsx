@@ -52,7 +52,7 @@ const ExtractingTable: React.FC<Props> = ({ milks }) => {
                                 <td>{milk.quantity}</td>
                                 <td style={{ maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{milk.description}</td>
                                 <td className="action">
-                                    <button><AiOutlineEdit /></button>
+                                    <button><AiOutlineEdit /></button> 
                                 </td>
                             </tr>
                         ))}
