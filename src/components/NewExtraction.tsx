@@ -58,7 +58,7 @@ const NewExtraction: React.FC<Props> = ({ milks, setMilks }) => {
             </div>
             <div className="quantity">
               <label>Quantity: </label><br />
-              <input type="number" value={quantity} className="amountIpt" required placeholder='Production quantity' onChange={(e) => setQuantity(parseInt(e.target.value))} />
+              <input type="number" min={1} value={quantity} className="amountIpt" required placeholder='Production quantity' onChange={(e) => setQuantity(parseInt(e.target.value))} />
             </div>
             <div className="descrpt">
               <label>Any Description </label><br />

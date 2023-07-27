@@ -4,22 +4,32 @@ import milkCow from '../../assets/milk_cow.jpg'
 import production from '../../assets/production.jpg'
 import { FarmersArray } from "../../types/WorkerType";
 
+import { useNavigate } from "react-router-dom";
+
 type Props = {
     farmers: FarmersArray;
     setFarmers: React.Dispatch<React.SetStateAction<FarmersArray>>;
 };
 
 const AdminNavbar:React.FC<Props> = ({ farmers, setFarmers }) => {
+    const navigate = useNavigate();
+
     const [activeTab, setActiveTab] = useState(1);
 
     const handleTabClick = (tabNumber: number) => {
         setActiveTab(tabNumber);
     };
 
+    const handleLogout = () => {
+        console.log("userData.email");
+        localStorage.removeItem('loggedInUser');
+        navigate("/");
+    };
+
     return (
         <div className="header">
             <div className='signUp'>
-                <button>Sign Out</button>
+                <button onClick={handleLogout}>Sign Out</button>
             </div>
             <div className='card'>
                 <div className="user-card">

@@ -546,7 +546,6 @@ table .res-head {
 }
 .data .form-content form .milkForm .descrpt .textarea{
 	width: 100%;
-	max-width:300px;
 }
 .data .form-content form .milkForm div label{
 	font-weight: 700;
@@ -568,3 +567,68 @@ table .res-head {
 
 /* border: 3px solid #08762e;
 	color: #08762e; */
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+	background-image: url("./assets/banner-bg.png");
+	background-color: #08762e;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+}
+	
+.card {
+	width: 300px;
+	background-color: transparent;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+	  
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+input {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	color: #fff;
+}
+	  
+button {
+	padding: 10px 20px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border: none;
+	border-radius: 5px;
+	color: #f6226f;
+	cursor: pointer;
+}
+
+.switch {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 10px;
+	margin-top: 10px;
+	color: #fff;
+}
+	  
+@media (max-width: 480px) {
+	.card {
+		width: 100%;
+		max-width: 300px;
+	}
+}
+	  

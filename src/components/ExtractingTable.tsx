@@ -17,7 +17,7 @@ const ExtractingTable: React.FC<Props> = ({ milks }) => {
                         <th>Id</th>
                         <th>Quantity of Milk</th>
                         <th>Date</th>
-                        <th>Comments</th>
+                        <th style={{ maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Comments</th>
                         <th>Options</th>
                     </tr>
                 </thead>
@@ -32,7 +32,7 @@ const ExtractingTable: React.FC<Props> = ({ milks }) => {
                                 <td>{milk.id}</td>
                                 <td>{milk.dateProd}</td>
                                 <td>{milk.quantity}</td>
-                                <td>{milk.description}</td>
+                                <td style={{ maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{milk.description}</td>
                                 <td className="action">
                                     <button><AiOutlineEdit /></button>
                                 </td>
