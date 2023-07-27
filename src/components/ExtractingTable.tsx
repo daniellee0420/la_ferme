@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { MilksArray } from "../types/MilkProductionType";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 
 type Props = {
     milks: MilksArray;
 };
 
 const ExtractingTable: React.FC<Props> = ({ milks }) => {
-    console.log(milks)
+    const [currentPage, setCurrentPage] = useState(0);
+    const totalPages = Math.ceil(milks.length / 10);
+
+    const startIndex = currentPage * 10;
+    const endIndex = startIndex + 10;
+    const currentData = milks.slice(startIndex, endIndex);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages - 1) {
+          setCurrentPage(currentPage + 1);
+        }
+    };
+    
+    const handlePrevPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     return(
         <div className='data'>
@@ -27,7 +45,7 @@ const ExtractingTable: React.FC<Props> = ({ milks }) => {
                     </tbody>
                     ) : (
                     <tbody>
-                        {milks.map((milk, index: number) => (
+                        {currentData.map((milk, index: number) => (
                             <tr key={index}>
                                 <td>{milk.id}</td>
                                 <td>{milk.dateProd}</td>
@@ -41,6 +59,18 @@ const ExtractingTable: React.FC<Props> = ({ milks }) => {
                     </tbody>
                 )}
             </table>
+
+            {totalPages > 1 && (
+                <div className="pagination">
+                    <button onClick={handlePrevPage} disabled={currentPage === 0} className={currentPage > 0 ? 'nextActive' : ''}>
+                        <AiOutlineArrowLeft /> <b>Prev</b>
+                    </button>
+                    <span>Page {currentPage + 1} of {totalPages}</span>
+                    <button onClick={handleNextPage} disabled={currentPage === totalPages - 1} className={currentPage < totalPages - 1 ? 'nextActive' : ''}>
+                        <b>Next</b> <AiOutlineArrowRight />
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

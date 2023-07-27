@@ -13,7 +13,6 @@ type Props = {
 
 const AdminNavbar:React.FC<Props> = ({ farmers, setFarmers }) => {
     const navigate = useNavigate();
-
     const [activeTab, setActiveTab] = useState(1);
 
     const handleTabClick = (tabNumber: number) => {
@@ -21,7 +20,6 @@ const AdminNavbar:React.FC<Props> = ({ farmers, setFarmers }) => {
     };
 
     const handleLogout = () => {
-        console.log("userData.email");
         localStorage.removeItem('loggedInUser');
         navigate("/");
     };

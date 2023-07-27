@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 *,
 *::before,
 *::after {
@@ -36,7 +38,8 @@ a {
 	left: 0;
 	width: 17vw;
 	height: 100vh;
-	background: #020321;
+	background-image: url("./assets/banner-bg.png");
+	background-color: #08762e;
 	opacity: 1;
 	transform: translateX(0);
 	transition: all .8s ease;
@@ -61,13 +64,15 @@ a {
 	font-weight: 400;
 	text-align: left;
 	transition: all .4s ease;
-	border-left: 5px solid #020321;
+	border-left: 5px solid transparent;
 }
 
 .nav_items a:hover,
 .nav_items a.active {
-	background: #000831;
-  border-left: 5px solid white;
+	font-weight: bold;
+	background: #e6e7ea;
+	border-left: 7px solid #08762e;
+	color: #08762e;
 }
 
 .content {
@@ -270,6 +275,39 @@ table tbody tr .action button:last-child {
 table .res-head {
 	display: none;
 }
+
+.data .pagination{
+	float: right;
+	padding: 15px 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 10px;
+}
+.data .pagination button{
+	border: 3px solid #08762e;
+	background-color: transparent;
+	color: #08762e;
+	padding: 5px 15px;
+	border-radius: 4px;
+	font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.data .pagination button:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+.data .pagination .nextActive{
+	background-color: #08762e;
+	color: #fff;
+}
+.data .pagination button:hover{
+	background-color: #08762e;
+	color: #fff;
+}
+
 @media screen and (max-width: 767px) {
 	table {
 	  background-color: transparent;
@@ -568,61 +606,105 @@ table .res-head {
 /* border: 3px solid #08762e;
 	color: #08762e; */
 
-.container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-
+.loginBLock{
+	height: 100vh;
 	margin: 0;
 	padding: 0;
 	background-image: url("./assets/banner-bg.png");
 	background-color: #08762e;
+	width: 100vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100vw;
+}
+
+.loginBLock .container {
+	width: 75%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.container .landText{
+	width: 50%;
+	color: whitesmoke;
+	font-family: Poppins;
+}
+
+.container .landText h1{
+	font-size: 60px;
+	color: #c5d512;
+	font-weight: bold;
+}
+.container .landText h2{
+	font-size: 40px;
+	color: whitesmoke;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.container .landText .small{
+	padding-bottom: 40px;
+	font-size: 12px;
+}
+.container .landText .btn{
+	/* padding-bottom: 40px; */
+	/* border: 3px solid red; */
 }
 	
-.card {
-	width: 300px;
-	background-color: transparent;
+.loginBLock .container .card {
+	width: 40%;
+	border: 3px solid rgb(212, 209, 209);
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
 	  
-form {
+.card form {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 15px;
 }
 
-input {
+.card form label{
+	color: white;
+	font-size: 11px;
+}
+.card form span{
+	color: rgb(223, 29, 29);
+	font-size: 11px;
+}
+
+.card form input {
 	padding: 10px;
 	border: none;
-	border-radius: 5px;
 	background-color: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-bottom: 3px solid rgb(212, 209, 209);
 	color: #fff;
 }
-	  
-button {
-	padding: 10px 20px;
-	background-color: rgba(255, 255, 255, 0.8);
-	border: none;
-	border-radius: 5px;
-	color: #f6226f;
-	cursor: pointer;
+.card form input:focus{
+	background-color: transparent!important;
+	outline: none;
+	border-bottom: 3px solid #c5d512; 
 }
-
-.switch {
+.card form .submitBtn {
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
-	gap: 10px;
-	margin-top: 10px;
-	color: #fff;
+}	  
+.card form .submitBtn button{
+	padding: 10px 20px;
+	background-color: #c5d512;
+	color: white;
+	width: 40%;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer; 
 }
 	  
 @media (max-width: 480px) {

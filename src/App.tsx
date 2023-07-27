@@ -10,17 +10,8 @@ const App = () => {
   return (
     <Router>
         <Routes>
-          {loggedInStatus ? (
-            <>
-              <Route path="/" element={<SalaryPaymentTable />} />
-              <Route path="/La_ferme" element={<SalaryPaymentTable />} />
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<LoginForm />} />
-              <Route path="/login" element={<LoginForm />} />
-            </>
-          )}
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/La_ferme" element={<SalaryPaymentTable />} />
         </Routes>
     </Router>
   );
